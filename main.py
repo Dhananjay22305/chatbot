@@ -5,7 +5,8 @@ from openai import OpenAI
 import os
 
 # ✅ Option 1: Use environment variable (Render recommended)
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
+
 
 # ✅ Option 2 (for testing only): Hardcode key if ENV doesn't work
 # client = OpenAI(api_key="sk-proj-...")
