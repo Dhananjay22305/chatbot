@@ -10,7 +10,7 @@ app = FastAPI()
 # 🌍 Allow CORS from all domains (use your frontend domain in production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 🔒 Replace with your HF URL for security
+    allow_origins=["https://huggingface.co/spaces/Dhananjay2203/ai-chatbot"],  # 🔒 Replace with your HF URL for security
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
