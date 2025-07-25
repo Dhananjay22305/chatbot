@@ -1,17 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import openai
+from openai import OpenAI
 import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# ✅ Use OpenAI client with key
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Or hardcode for testing
 
 app = FastAPI()
 
-# Add CORS for Hugging Face frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://huggingface.co/spaces/Dhananjay2203/ai-chatbot"],  # Replace * with your HF app URL for security
+    allow_origins=["https://huggingface.co/spaces/Dhananjay2203/ai-chatbot"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,7 +27,7 @@ async def root():
 @app.post("/chat")
 async def chat(msg: Message):
     try:
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": msg.message}]
         )
