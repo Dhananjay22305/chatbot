@@ -5,8 +5,7 @@ from pydantic import BaseModel
 from openai import OpenAI
 
 # ✅ HARD CODE THE API KEY (ensure no space or newline)
-client = OpenAI(api_key="
-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")
+client = OpenAI(api_key="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")
 
 app = FastAPI()
 
